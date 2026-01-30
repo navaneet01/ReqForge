@@ -1,0 +1,17 @@
+{
+    "builds": [
+        {
+            "src": "reqforge/frontend/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "reqforge/frontend/dist"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "reqforge/frontend/dist/$1"
+        }
+    ]
+}
