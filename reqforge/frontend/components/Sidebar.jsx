@@ -4,9 +4,9 @@ const Sidebar = () => {
     const location = useLocation();
 
     const menuItems = [
-        { path: '/dashboard', label: 'Dashboard', icon: '📊' },
-        { path: '/create', label: 'New Project', icon: '➕' },
-        // { path: '/settings', label: 'Settings', icon: '⚙️' },
+        { path: '/dashboard', label: 'Dashboard', icon: '88' }, // Using text as placeholder for icon from image
+        { path: '/dashboard', label: 'Projects', icon: '📁' },
+        // Reports removed per request
     ];
 
     return (
@@ -19,8 +19,8 @@ const Sidebar = () => {
                             key={item.path}
                             to={item.path}
                             className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${location.pathname === item.path
-                                    ? 'bg-indigo-50 text-indigo-700 font-medium'
-                                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                ? 'bg-indigo-50 text-indigo-700 font-medium'
+                                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                                 }`}
                         >
                             <span>{item.icon}</span>
