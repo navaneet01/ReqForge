@@ -5,7 +5,8 @@ const DownloadButton = ({ projectId }) => {
         // This assumes the backend serves the file directly or the controller handles it
         // For better experience we might use api.get with responseType blob, 
         // but the direct window.open or link method is simpler for now.
-        window.open(`http://localhost:5000/api/export/pdf/${projectId}`, '_blank');
+        const baseURL = import.meta.env.VITE_API_BASE_URL || 'https://reqforge.onrender.com/api';
+        window.open(`${baseURL}/export/pdf/${projectId}`, '_blank');
     };
 
     return (

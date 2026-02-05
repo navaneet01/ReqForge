@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://reqforge.onrender.com/api'
+    baseURL: import.meta.env.VITE_API_BASE_URL || 'https://reqforge.onrender.com/api' // Fallback to Render if env var missing
 });
 
 api.interceptors.request.use((config) => {

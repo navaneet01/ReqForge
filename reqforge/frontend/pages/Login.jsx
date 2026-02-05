@@ -16,7 +16,9 @@ function Login() {
             localStorage.setItem('token', res.data.token);
             navigate('/dashboard');
         } catch (err) {
-            alert('Invalid login credentials');
+            console.error("Login Error:", err);
+            const errorMsg = err.response?.data?.msg || err.message || 'Login failed';
+            alert(`Error: ${errorMsg}`);
         } finally {
             setLoading(false);
         }
