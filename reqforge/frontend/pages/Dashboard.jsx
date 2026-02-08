@@ -17,7 +17,9 @@ function Dashboard() {
     const fetchProjects = async () => {
         try {
             const res = await api.get('/project/all');
-            setProjects(res.data);
+            // Sort by createdAt descending (newest first)
+            const sortedProjects = res.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            setProjects(sortedProjects);
         } catch (err) {
             console.error(err);
         } finally {
@@ -34,6 +36,27 @@ function Dashboard() {
         } catch (err) {
             alert('Delete failed');
         }
+    };
+
+
+    const formatDate = (dateString) => {
+        if (!dateString) return 'N/A';
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffInSeconds = Math.floor((now - date) / 1000);
+
+        if (diffInSeconds < 60) return 'Just now';
+
+        const diffInMinutes = Math.floor(diffInSeconds / 60);
+        if (diffInMinutes < 60) return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+
+        const diffInHours = Math.floor(diffInMinutes / 60);
+        if (diffInHours < 24) return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+
+        const diffInDays = Math.floor(diffInHours / 24);
+        if (diffInDays < 7) return `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
+
+        return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
     };
 
     if (loading) {
@@ -77,7 +100,7 @@ function Dashboard() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {projects.map((project, index) => (
+                                {projects.map((project) => (
                                     <tr
                                         key={project._id}
                                         onClick={() => navigate(`/project/${project._id}`)}
@@ -93,8 +116,7 @@ function Dashboard() {
                                             </span>
                                         </td>
                                         <td className="py-4 px-6 text-gray-500 text-sm">
-                                            {/* Mock Time for Visual Parity - In real app use moment/date-fns */}
-                                            {20 + index} minutes ago
+                                            {formatDate(project.updatedAt)}
                                         </td>
                                         <td className="py-4 px-6 text-right">
                                             <button
