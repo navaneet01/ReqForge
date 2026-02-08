@@ -1,4 +1,4 @@
-import Sidebar from './Sidebar';
+// import Sidebar from './Sidebar'; // Removed
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
 
@@ -14,10 +14,8 @@ const Layout = ({ children }) => {
         <div className="min-h-screen bg-gray-50 flex font-sans text-gray-900">
 
             {/* Sidebar - Fixed on Login */}
-            <Sidebar />
-
             {/* Main Content Area */}
-            <div className="flex-1 md:ml-64 flex flex-col min-h-screen">
+            <div className="flex-1 flex flex-col min-h-screen">
                 <Navbar />
 
                 <main className="flex-grow p-6 lg:p-8 max-w-7xl mx-auto w-full">

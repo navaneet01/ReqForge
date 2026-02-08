@@ -34,12 +34,6 @@ const Navbar = () => {
                                 >
                                     Dashboard
                                 </Link>
-                                <Link
-                                    to="/create"
-                                    className={`text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500 transition ${isActive('/create') ? 'bg-indigo-700' : ''}`}
-                                >
-                                    New Project
-                                </Link>
                                 <button
                                     onClick={handleLogout}
                                     className="bg-white text-indigo-600 px-4 py-2 rounded-md text-sm font-bold hover:bg-gray-100 transition shadow-sm"

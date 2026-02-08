@@ -88,8 +88,8 @@ function Dashboard() {
                                         </td>
                                         <td className="py-4 px-6">
                                             {/* Mock Status for Visual Parity */}
-                                            <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${index % 2 === 0 ? 'bg-green-500' : 'bg-orange-500'}`}>
-                                                {index % 2 === 0 ? 'Status' : 'Complex'}
+                                            <span className="px-3 py-1 rounded-full text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-100">
+                                                Ongoing
                                             </span>
                                         </td>
                                         <td className="py-4 px-6 text-gray-500 text-sm">
@@ -99,9 +99,9 @@ function Dashboard() {
                                         <td className="py-4 px-6 text-right">
                                             <button
                                                 onClick={(e) => deleteProject(project._id, e)}
-                                                className="text-gray-400 hover:text-red-500 font-bold text-xl leading-none"
+                                                className="text-red-500 hover:text-red-700 font-bold text-sm bg-red-50 hover:bg-red-100 px-3 py-1 rounded transition-colors"
                                             >
-                                                ...
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>

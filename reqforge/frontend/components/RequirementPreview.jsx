@@ -16,7 +16,7 @@ const RequirementPreview = ({ requirements }) => {
                                 {requirements[section].map((item, idx) => (
                                     <li key={idx} className="flex items-start gap-3 group">
                                         <span className="mt-2 w-1.5 h-1.5 bg-gray-400 rounded-full group-hover:bg-indigo-500 transition-colors"></span>
-                                        <span className="text-gray-700 leading-relaxed">{item}</span>
+                                        <span className="text-gray-700 leading-relaxed break-words break-all whitespace-pre-wrap">{item}</span>
                                     </li>
                                 ))}
                             </ul>

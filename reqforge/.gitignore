@@ -6,3 +6,6 @@ build/
 coverage/
 .vscode/
 *.log
+
+debug_output.txt
+backend/debug_output.txt

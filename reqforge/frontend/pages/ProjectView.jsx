@@ -30,7 +30,7 @@ function ProjectView() {
                         </button>
                         <div>
                             <h1 className="text-xl font-bold text-gray-900">{project.projectName}</h1>
-                            <div className="text-xs text-green-600 font-medium bg-green-50 px-2 py-0.5 rounded-full inline-block">v1.0 DRAFT</div>
+
                         </div>
                     </div>
 

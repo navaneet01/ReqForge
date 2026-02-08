@@ -32,12 +32,12 @@ const FormBuilder = ({ onSubmit, loading }) => {
                     <div className="space-y-6 animate-fade-in">
                         <h2 className="text-2xl font-bold text-gray-800">What is the name of your project?</h2>
                         <input
-                            className="w-full text-2xl border-b-2 border-gray-200 focus:border-indigo-600 p-2 outline-none transition bg-transparent placeholder-gray-300"
+                            className="w-full text-2xl border-b-2 border-gray-200 focus:border-indigo-600 p-2 outline-none transition bg-transparent placeholder-gray-300 break-words break-all"
                             placeholder="e.g. Ecommerce Website"
                             autoFocus
                             value={formData.projectName}
                             onChange={e => updateData('projectName', e.target.value)}
-                            onKeyDown={e => e.key === 'Enter' && !!formData.projectName && setStep(2)}
+                            onKeyDown={e => e.key === 'Enter' && formData.projectName.trim().length >= 3 && setStep(2)}
                         />
                     </div>
                 )}
@@ -47,7 +47,7 @@ const FormBuilder = ({ onSubmit, loading }) => {
                         <h2 className="text-2xl font-bold text-gray-800">Describe your project requirements</h2>
                         <p className="text-gray-500">List all the features, user roles, and functionalities you need.</p>
                         <textarea
-                            className="w-full h-96 border-2 border-gray-200 rounded-xl p-4 focus:border-indigo-600 outline-none transition resize-none text-lg"
+                            className="w-full h-96 border-2 border-gray-200 rounded-xl p-4 focus:border-indigo-600 outline-none transition resize-none text-lg break-words break-all"
                             placeholder="e.g. I need a system where users can sign up, pay online. Admins should see a dashboard..."
                             autoFocus
                             value={formData.description}
@@ -69,16 +69,16 @@ const FormBuilder = ({ onSubmit, loading }) => {
                 {step < 2 ? (
                     <button
                         onClick={() => setStep(s => Math.min(2, s + 1))}
-                        disabled={step === 1 && !formData.projectName}
-                        className="bg-gray-900 text-white px-8 py-2 rounded-lg font-bold hover:bg-gray-800 transition disabled:opacity-50"
+                        disabled={step === 1 && formData.projectName.trim().length < 3}
+                        className="bg-gray-900 text-white px-8 py-2 rounded-lg font-bold hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Next
                     </button>
                 ) : (
                     <button
                         onClick={handleSubmit}
-                        disabled={loading || !formData.description}
-                        className="bg-green-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-green-700 transition shadow-lg hover:shadow-xl disabled:opacity-70"
+                        disabled={loading || formData.description.trim().length < 5}
+                        className="bg-green-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-green-700 transition shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Generating...' : 'Generate SRS ✨'}
                     </button>
